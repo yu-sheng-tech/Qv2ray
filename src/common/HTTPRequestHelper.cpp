@@ -53,7 +53,7 @@ namespace Qv2ray::common
 
         request.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
         request.setAttribute(QNetworkRequest::HTTP2AllowedAttribute, true);
-        request.setHeader(QNetworkRequest::KnownHeaders::UserAgentHeader, "Mozilla/5.0 (rv:71.0) Gecko/20100101 Firefox/71.0");
+        request.setHeader(QNetworkRequest::KnownHeaders::UserAgentHeader, "Qv2ray/" QV2RAY_VERSION_STRING " Special-For/Solar-Lancelo");
         reply = accessManager.get(request);
         connect(reply, &QNetworkReply::finished, this, &QvHttpRequestHelper::onRequestFinished_p);
         //
