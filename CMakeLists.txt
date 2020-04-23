@@ -10,6 +10,10 @@ if(NOT CMAKE_BUILD_TYPE STREQUAL "Release")
     file(WRITE "${CMAKE_SOURCE_DIR}/makespec/BUILDVERSION" ${QV2RAY_BUILD_VERSION})
 endif()
 
+if(ENABLE_ASAN)
+    set(CMAKE_CXX_FLAGS "-fsanitize=address ${CMAKE_CXX_FLAGS}")
+endif()
+
 set(QV2RAY_VERSION_STRING "${QV2RAY_VERSION}${QV2RAY_VERSION_SUFFIX}")
 project(qv2ray)
 

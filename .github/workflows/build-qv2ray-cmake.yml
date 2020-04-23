@@ -84,7 +84,8 @@ jobs:
       - name: Linux - ${{ matrix.qt_version }} - Build preparation - Install Packages 
         if: matrix.platform == 'ubuntu-16.04'
         run: |
-          sudo add-apt-repository ppa:webispy/grpc
+#          sudo add-apt-repository ppa:webispy/grpc
+          sudo add-apt-repository ppa:ymshenyu/qv2ray-deps
           sudo add-apt-repository ppa:carsten-uppenbrink-net/openssl
           sudo apt update
           sudo apt install -y libgl-dev libx11-dev libxkbcommon-x11-dev libssl-dev libprotobuf-dev protobuf-compiler protobuf-c-compiler libgrpc++-dev protobuf-compiler-grpc tree ninja-build
@@ -147,7 +148,7 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake .. -GNinja -DCMAKE_INSTALL_PREFIX=./AppDir/usr -DCMAKE_BUILD_TYPE=Release -DQV2RAY_TRANSLATION_PATH=QApplication::applicationDirPath\(\)+"/../share/qv2ray/lang"
+          cmake .. -GNinja -DCMAKE_INSTALL_PREFIX=./AppDir/usr -DCMAKE_BUILD_TYPE=Release -DQV2RAY_TRANSLATION_PATH=QApplication::applicationDirPath\(\)+"/../share/qv2ray/lang" -DENABLE_ASAN=ON
           cmake --build . --parallel $(nproc)
           cmake --install .
 # ========================================================================================================= Deployments
