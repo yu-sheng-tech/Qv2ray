@@ -3,7 +3,7 @@ name: Qv2ray Windows Installer
 on: 
   push:
   release:
-    types: [prereleaseda]
+    types: [prereleased]
 
 jobs:
   build:
